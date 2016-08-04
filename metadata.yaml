@@ -1,0 +1,31 @@
+_repo: My-Memories-of-Eighty-Years_2045
+_version: 0.0.1
+alternative_title: My Memories of 80 Years
+creator:
+  author:
+    agent_name: Depew, Chauncey M. (Chauncey Mitchell)
+    aliases:
+    - Depew, Chauncey Mitchell
+    - Pew, Chauncey De
+    birthdate: 1834
+    deathdate: 1928
+    gutenberg_agent_id: '799'
+    url: http://www.gutenberg.org/2009/agents/799
+    wikipedia: http://en.wikipedia.org/wiki/Chauncey_Depew
+description: ''
+gutenberg_issued: '2000-01-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '2045'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Biography'
+- !lcsh 'Depew, Chauncey M. (Chauncey Mitchell), 1834-1928'
+- !lcc 'E660'
+- !lcsh 'United States -- History -- 1865-1921'
+- GITenberg
+title: My Memories of Eighty Years
+url: http://www.gutenberg.org/ebooks/2045
