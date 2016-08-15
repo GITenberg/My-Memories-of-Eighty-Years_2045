@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: lsPk3qjgzyTaAQZ9kkFUekdCi8sfZkC7gAuoDPF1Na4BbTsfR3j5btyVhUcGiuSGn1XkqoHrla0h2yHgi8x7JmQqe+wLq4eqO/iXKfNF7MXbfGlurW9Dm+cRBKVZN8JngVdKSTnmoVimiMjzL40O4KvReBACyeje8Cq2kYrFxhUk+76BsGMVw5dt+re07w8eF+8KGcNUrvLmZ0qeIrwgvkwEXrhbQv2cItqd7t59c14rMZF0+8/eLCn0pDnqByIStwFnVrxPjYF+cJFZBJ+5h+x6bLyawpeToaRTXYqDZfCmaru0w8qa29kMYTn4jJ7Ql4xRhYLnRjcVOvGhiL4iVfYUcBSnOAWsv/ItSL8fASTD5YDhtwpnzDx5rtjQic7N2rjF/JFUdHw/pHMmq0cJSLbzuD4i6Uvslt2Hs3VRHMXbNsnQva9ocsg3OyECmE8VIqwnyaaEBOw88NveGpUkSBEACzJzU6T+xturabld2bQEf7sJ785Z73U89fOaofIPTekLm9pg47SO87gA9+3i4MAaglSDmWiyhaSizHWJAnaZwJFJ+vozf6Vgc83wHxd5ufQrhM9ieQVDbow1pfaN1TKrK1qdhmJgnGEwXY9LUYCWTsM/S8b4sgEp1YLhGxKvZhqNOPh6CH7EYdveHBBmsPTr+HUkBr0dnYXSb2gI60Q=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/My-Memories-of-Eighty-Years_2045
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
