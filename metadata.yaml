@@ -1,6 +1,9 @@
 _repo: My-Memories-of-Eighty-Years_2045
-_version: 0.1.0
+_version: 0.2.0
 alternative_title: My Memories of 80 Years
+covers:
+- cover_type: generated
+  image_path: cover.png
 creator:
   author:
     agent_name: Depew, Chauncey M. (Chauncey Mitchell)
@@ -13,6 +16,8 @@ creator:
     url: http://www.gutenberg.org/2009/agents/799
     wikipedia: http://en.wikipedia.org/wiki/Chauncey_Depew
 description: ''
+edition_identifiers:
+  edition_id: http://www.gutenberg.org/ebooks/2045#My-Memories-of-Eighty-Years
 gutenberg_issued: '2000-01-01'
 gutenberg_type: Text
 identifiers:
